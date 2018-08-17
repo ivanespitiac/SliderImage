@@ -31,12 +31,6 @@ class FullScreenImageActivity : AppCompatActivity() {
         indicatorScreen.setViewPager(viewPagerFullScreen)
     }
 
-    //fun fullScreenMode() {
-    //    requestWindowFeature(Window.FEATURE_NO_TITLE)
-    //    window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-    //            WindowManager.LayoutParams.FLAG_FULLSCREEN)
-    //}
-
     fun onclickComponents(view: View) {
         Log.d("Library", "${view.id}")
         onBackPressed()
