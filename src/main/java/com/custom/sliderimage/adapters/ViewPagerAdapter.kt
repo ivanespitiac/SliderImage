@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.support.v4.view.PagerAdapter
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -29,7 +28,6 @@ class ViewPagerAdapter(val context: Context, var items: ArrayList<String>): Page
         return if (context is FullScreenImageActivity) {
             val item = ZoomableDraweeView(context)
             item.setAllowTouchInterceptionWhileZoomed(true)
-            item.setTapListener({})
             item.setIsLongpressEnabled(false)
             item.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.MATCH_PARENT)
@@ -81,8 +79,4 @@ class ViewPagerAdapter(val context: Context, var items: ArrayList<String>): Page
             context.startActivity(intent)
         }
     }
-}
-
-private fun ZoomableDraweeView.setTapListener(function: () -> Unit) {
-    Log.d("Librari", "tap gesture ")
 }

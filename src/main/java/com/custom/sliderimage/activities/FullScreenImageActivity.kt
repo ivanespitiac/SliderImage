@@ -2,6 +2,7 @@ package com.custom.sliderimage.activities
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
@@ -30,13 +31,14 @@ class FullScreenImageActivity : AppCompatActivity() {
         indicatorScreen.setViewPager(viewPagerFullScreen)
     }
 
-    fun fullScreenMode() {
-        requestWindowFeature(Window.FEATURE_NO_TITLE)
-        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN)
-    }
+    //fun fullScreenMode() {
+    //    requestWindowFeature(Window.FEATURE_NO_TITLE)
+    //    window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+    //            WindowManager.LayoutParams.FLAG_FULLSCREEN)
+    //}
 
     fun onclickComponents(view: View) {
+        Log.d("Library", "${view.id}")
         onBackPressed()
     }
 
