@@ -7,7 +7,7 @@ Desarrollada en kotlin 1.1.51, utilizando fresco para la carga de imagenes.
 ## Implementacion:
 
 ```
- implemetation 'io.github.ivanespitiac:imageslider:1.0'
+ implementation 'io.github.ivanespitiac:imageslider:1.0'
  ```
 
 ## Uso:
