@@ -7,12 +7,16 @@ Desarrollada en kotlin 1.1.51, utilizando fresco para la carga de imagenes.
 ## Implementacion:
 
 ```
- implementation 'io.github.ivanespitiac:imageslider:1.0'
- ```
+dependecies {
+    implementation 'io.github.ivanespitiac:imageslider:1.0'
+}
+```
  
-  ```
-  maven { url 'https://jitpack.io' }
-   ```
+```
+repositories {
+    maven { url 'https://jitpack.io' }
+}
+```
 
 ## Uso:
 
