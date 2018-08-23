@@ -53,9 +53,7 @@ class ViewPagerAdapter(val context: Context, var items: ArrayList<String>): Page
     }
 
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
-        //if (context is FullScreenImageActivity) {
-        //    container.removeViewAt(position)
-        //}
+        container.removeView((`object` as View))
     }
 
     override fun isViewFromObject(p0: View, p1: Any): Boolean {

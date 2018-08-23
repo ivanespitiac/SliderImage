@@ -41,6 +41,7 @@ class SliderImage : LinearLayout {
     init {
         LayoutInflater.from(context).inflate(R.layout.layout_slider_image, this, true)
         orientation = VERTICAL
+
         vewPagerSlider.adapter = ViewPagerAdapter(context = context, items = items)
         indicator.setViewPager(vewPagerSlider)
     }
