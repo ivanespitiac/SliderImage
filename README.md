@@ -8,7 +8,7 @@ Desarrollada en kotlin 1.1.51, utilizando fresco para la carga de imagenes.
 
 ```
 dependecies {
-    implementation 'io.github.ivanespitiac:imageslider:1.0.1'
+    implementation 'io.github.ivanespitiac:imageslider:1.0.2'
 }
 ```
  
