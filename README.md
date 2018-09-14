@@ -38,6 +38,13 @@ override fun onCreate(savedInstanceState: Bundle?) {
     }
 ```
 
+Inicializar el objeto SliderImage
+
+```
+val slider = SliderImage(context)
+```
+
+
 lista de url de imagenes cargadas en el slider:
 
 ```
