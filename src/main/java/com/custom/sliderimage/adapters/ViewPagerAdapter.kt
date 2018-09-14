@@ -8,8 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
-import com.bosong.frescozoomablelib.zoomable.ZoomableDraweeView
 import com.custom.sliderimage.activities.FullScreenImageActivity
+import com.custom.sliderimage.zoomable.DoubleTapGestureListener
+import com.custom.sliderimage.zoomable.ZoomableDraweeView
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.facebook.drawee.view.SimpleDraweeView
 import java.util.*
@@ -29,6 +30,7 @@ class ViewPagerAdapter(val context: Context, var items: ArrayList<String>): Page
             val item = ZoomableDraweeView(context)
             item.setAllowTouchInterceptionWhileZoomed(true)
             item.setIsLongpressEnabled(false)
+            item.setTapListener(DoubleTapGestureListener(item))
             item.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.MATCH_PARENT)
             item.controller = Fresco.newDraweeControllerBuilder()
