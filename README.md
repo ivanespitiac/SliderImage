@@ -1,8 +1,12 @@
 # SliderImage
 
-Libreria de carrusel de imagenes por medio de una o mas URL.
-
+Libreria de carrusel de imagenes por medio de una o mas String URL.
 Desarrollada en kotlin 1.1.51, utilizando fresco para la carga de imagenes.
+Requere la habilitacion de la aceleracion por hardware.
+
+```
+android:hardwareAccelerated="true"
+```
 
 ## Implementacion:
 
