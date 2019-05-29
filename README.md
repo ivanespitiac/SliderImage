@@ -7,6 +7,7 @@ Slider image library for images with diferent URI types.
 
 Fresco Library reference (https://frescolib.org/docs/supported-uris.html)
 
+```
 TYPE	                SCHEME	                    FETCH METHOD USED
 File on network	        http://, https://	        HttpURLConnection or network layer
 File on device	        file://	                    FileInputStream
@@ -14,8 +15,10 @@ Content provider	    content://	                ContentResolver
 Asset in app	        asset://	                AssetManager
 Resource in app	        res:// as in res:///12345	Resources.openRawResource
 Data in URI	            data:mime/type;base64,	    Following data URI spec (UTF-8 only)
+```
 
 Requere la habilitacion de la aceleracion por hardware.
+
 ```
 android:hardwareAccelerated="true"
 ```
