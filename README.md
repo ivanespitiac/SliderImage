@@ -2,8 +2,20 @@
 
 Libreria de carrusel de imagenes por medio de una o mas String URL.
 Desarrollada en kotlin 1.1.51, utilizando fresco para la carga de imagenes.
-Requere la habilitacion de la aceleracion por hardware.
 
+Slider image library for images with diferent URI types. 
+
+Fresco Library reference (https://frescolib.org/docs/supported-uris.html)
+
+TYPE	                SCHEME	                    FETCH METHOD USED
+File on network	        http://, https://	        HttpURLConnection or network layer
+File on device	        file://	                    FileInputStream
+Content provider	    content://	                ContentResolver
+Asset in app	        asset://	                AssetManager
+Resource in app	        res:// as in res:///12345	Resources.openRawResource
+Data in URI	            data:mime/type;base64,	    Following data URI spec (UTF-8 only)
+
+Requere la habilitacion de la aceleracion por hardware.
 ```
 android:hardwareAccelerated="true"
 ```
@@ -12,7 +24,7 @@ android:hardwareAccelerated="true"
 
 ```
 dependecies {
-    implementation 'io.github.ivanespitiac:imageslider:1.0.2'
+    implementation 'io.github.ivanespitiac:imageslider:1.0.3'
 }
 ```
  
@@ -24,32 +36,47 @@ repositories {
 
 ## Uso:
 
+Agrega el componente en la interfa grafica: (Add the component to UI)
+
 ```
 <com.custom.sliderimage.logic.SliderImage
         android:id="@+id/slider"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 ```             
+
+Agrega el component a nivel de codigo: (Add the component programatically)
   
 ```
 override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val items = ArrayList<String>()
-        items.add("url image")
-        items.add("url image")
+        
+        // Create slider image component
+        val sliderImage = SliderImage(this)
+        
+        // add images URLs
+        val images = listOf(
+        "url image",
+        "url image",
+        "url image")
+        
+        // Add image URLs to sliderImage
         slider.setItems(items)
+        
+        // Add slider component to a container
+        container_main_images.addView(slider)
     }
 ```
 
-Inicializar el objeto SliderImage
+Inicializar el objeto SliderImage (Init SliderImage component programatically)
 
 ```
 val slider = SliderImage(context)
 ```
 
 
-lista de url de imagenes cargadas en el slider:
+lista de url de imagenes cargadas en el slider: (Get URLs array from component)
 
 ```
 slider.getItems()
@@ -58,25 +85,22 @@ slider.getItems()
 funciones porporcionadas por el slider:
 
 ```
-slider.onPageListener(
-                onPageScroll = { i: Int, fl: Float, i1: Int ->
-                    
-                },
-                onPageSelected = {position ->
-
-                },
-                onPageStateChange = {state ->
-
-                })
+slider.onPageListener(onPageScroll = { position, offSet, offSetPixels ->
+            logD("position $position  offSet: $offSet  pixels $offSetPixels")
+        }, onPageStateChange = { state ->
+            logD("State change $state")
+        }, onPageSelected = { position ->
+            logD("page select $position")
+        })
 ```
 
-Lanzar full screen activity aparte (view pager open full screen automatically when press page):
+Lanzar full screen activity sin inicializar el component (view pager open full screen automatically when press page, but if you want to use only full screen image slider, you can use the next line):
 
 ```
-slider.openfullScreen(items = items, position = 0)
+SliderImage.openfullScreen(items = items, position = 0)
 ```
 
-obtener propiedades del indicador (reference to 'me.relex:circleindicator:1.2.2@aar'):
+obtener propiedades del indicador (get circle indicator from 'me.relex:circleindicator:1.2.2@aar'):
 
 ```
 slider.getIndicator()
