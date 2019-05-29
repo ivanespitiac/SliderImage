@@ -72,6 +72,18 @@ override fun onCreate(savedInstanceState: Bundle?) {
     }
 ```
 
+Añadir tiempo para recorrer imagenes automaticamente: (Add timer to show images automatically.)
+
+```
+slider.addTimerToSlide(2000)
+```
+
+Remover tiempo añadido anteriormente: (Remove timer to show images)
+
+```
+slider.removeTimerSlide()
+```
+
 Inicializar el objeto SliderImage (Init SliderImage component programatically)
 
 ```
