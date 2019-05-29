@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.support.v4.view.PagerAdapter
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -13,12 +14,11 @@ import com.custom.sliderimage.zoomable.DoubleTapGestureListener
 import com.custom.sliderimage.zoomable.ZoomableDraweeView
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.facebook.drawee.view.SimpleDraweeView
-import java.util.*
 
 /**
  * Created by Ivan on 16/08/18.
  */
-class ViewPagerAdapter(val context: Context, var items: ArrayList<String>): PagerAdapter() {
+class ViewPagerAdapter(val context: Context, var items: List<String>): PagerAdapter() {
 
     init {
         Fresco.initialize(context.applicationContext)
@@ -44,16 +44,26 @@ class ViewPagerAdapter(val context: Context, var items: ArrayList<String>): Page
                     LinearLayout.LayoutParams.MATCH_PARENT)
             item.setImageURI(items[position])
             item.scaleType = ImageView.ScaleType.CENTER
-            item.setOnClickListener(openExpandImage(position))
+
+            item.setOnClickListener {
+                val intent = Intent(context, FullScreenImageActivity::class.java)
+                intent.putExtra("items", items.toTypedArray())
+                intent.putExtra("position", position)
+                context.startActivity(intent)
+            }
+
             container.addView(item)
             item
         }
     }
 
-    override fun getItemPosition(`object`: Any?): Int {
+    override fun getItemPosition(`object`: Any): Int {
         return items.indexOf(`object`)
     }
 
+    /**
+     * Destroy unused element from view pager
+     */
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
         container.removeView((`object` as View))
     }
@@ -66,17 +76,13 @@ class ViewPagerAdapter(val context: Context, var items: ArrayList<String>): Page
         return items.size
     }
 
-    fun setItemsPager(items: ArrayList<String>) {
+    /**
+     * Set new items for view pager
+     * @param items
+     */
+    fun setItemsPager(items: List<String>) {
         this.items = items
         this.notifyDataSetChanged()
     }
 
-    fun openExpandImage(position: Int): View.OnClickListener {
-        return View.OnClickListener {
-            val intent = Intent(context, FullScreenImageActivity::class.java)
-            intent.putExtra("items", items)
-            intent.putExtra("position", position)
-            context.startActivity(intent)
-        }
-    }
 }

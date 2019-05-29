@@ -23,14 +23,21 @@ class FullScreenImageActivity : AppCompatActivity() {
         getExtras()
     }
 
-    fun getExtras() {
-        val items = intent.extras.getStringArrayList("items")
+    /**
+     * Get extras from external call
+     */
+    private fun getExtras() {
+        val items = intent.extras.getStringArray("items")
         val position = intent.extras.getInt("position")
-        viewPagerFullScreen.adapter = ViewPagerAdapter(context = this, items = items)
+        viewPagerFullScreen.adapter = ViewPagerAdapter(context = this, items = items.toList())
         viewPagerFullScreen.setCurrentItem(position, true)
         indicatorScreen.setViewPager(viewPagerFullScreen)
     }
 
+    /**
+     * On click action from UI
+     * @param view
+     */
     fun onclickComponents(view: View) {
         Log.d("Library", "${view.id}")
         onBackPressed()

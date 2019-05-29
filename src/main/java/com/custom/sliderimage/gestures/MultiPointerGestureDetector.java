@@ -13,7 +13,7 @@ import android.view.MotionEvent;
  * one will be started (if there are still pressed pointers left). It is guaranteed that the number
  * of pointers within the single gesture will remain the same during the whole gesture.
  */
-public class MultiPointerGestureDetector {
+class MultiPointerGestureDetector {
 
     /** The listener for receiving notifications when gestures occur. */
     public interface Listener {
@@ -40,12 +40,12 @@ public class MultiPointerGestureDetector {
 
     private Listener mListener = null;
 
-    public MultiPointerGestureDetector() {
+    MultiPointerGestureDetector() {
         reset();
     }
 
     /** Factory method that creates a new instance of MultiPointerGestureDetector */
-    public static MultiPointerGestureDetector newInstance() {
+    static MultiPointerGestureDetector newInstance() {
         return new MultiPointerGestureDetector();
     }
 
@@ -53,14 +53,14 @@ public class MultiPointerGestureDetector {
      * Sets the listener.
      * @param listener listener to set
      */
-    public void setListener(Listener listener) {
+    void setListener(Listener listener) {
         mListener = listener;
     }
 
     /**
      * Resets the component to the initial state.
      */
-    public void reset() {
+    void reset() {
         mGestureInProgress = false;
         mPointerCount = 0;
         for (int i = 0; i < MAX_POINTERS; i++) {
@@ -161,7 +161,7 @@ public class MultiPointerGestureDetector {
      * @param event event to handle
      * @return whether or not the event was handled
      */
-    public boolean onTouchEvent(final MotionEvent event) {
+    boolean onTouchEvent(final MotionEvent event) {
         switch (event.getActionMasked()) {
             case MotionEvent.ACTION_MOVE: {
                 // update pointers
@@ -202,7 +202,7 @@ public class MultiPointerGestureDetector {
     }
 
     /** Restarts the current gesture (if any).  */
-    public void restartGesture() {
+    void restartGesture() {
         if (!mGestureInProgress) {
             return;
         }
@@ -215,17 +215,17 @@ public class MultiPointerGestureDetector {
     }
 
     /** Gets whether there is a gesture in progress */
-    public boolean isGestureInProgress() {
+    boolean isGestureInProgress() {
         return mGestureInProgress;
     }
 
     /** Gets the number of pointers after the current gesture */
-    public int getNewPointerCount() {
+    int getNewPointerCount() {
         return mNewPointerCount;
     }
 
     /** Gets the number of pointers in the current gesture */
-    public int getPointerCount() {
+    int getPointerCount() {
         return mPointerCount;
     }
 
@@ -233,7 +233,7 @@ public class MultiPointerGestureDetector {
      * Gets the start X coordinates for the all pointers
      * Mutable array is exposed for performance reasons and is not to be modified by the callers.
      */
-    public float[] getStartX() {
+    float[] getStartX() {
         return mStartX;
     }
 
@@ -241,7 +241,7 @@ public class MultiPointerGestureDetector {
      * Gets the start Y coordinates for the all pointers
      * Mutable array is exposed for performance reasons and is not to be modified by the callers.
      */
-    public float[] getStartY() {
+    float[] getStartY() {
         return mStartY;
     }
 
@@ -249,7 +249,7 @@ public class MultiPointerGestureDetector {
      * Gets the current X coordinates for the all pointers
      * Mutable array is exposed for performance reasons and is not to be modified by the callers.
      */
-    public float[] getCurrentX() {
+    float[] getCurrentX() {
         return mCurrentX;
     }
 
@@ -257,7 +257,7 @@ public class MultiPointerGestureDetector {
      * Gets the current Y coordinates for the all pointers
      * Mutable array is exposed for performance reasons and is not to be modified by the callers.
      */
-    public float[] getCurrentY() {
+    float[] getCurrentY() {
         return mCurrentY;
     }
 }
